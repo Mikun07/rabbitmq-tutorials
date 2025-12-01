@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # needed by Sonar
+          fetch-depth: 0
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -39,7 +39,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2-
 
-      - name: Build and analyze
+      - name: Build and analyze (Java Maven tutorials)
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        run: |
+          cd java-mvn
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
