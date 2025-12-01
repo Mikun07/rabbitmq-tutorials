@@ -12,7 +12,6 @@ jobs:
     name: Build and analyze
     runs-on: ubuntu-latest
 
-    # All `run:` commands will execute in java-mvn/
     defaults:
       run:
         working-directory: java-mvn
@@ -47,8 +46,4 @@ jobs:
       - name: Build and analyze (Java Maven tutorials)
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn -B -DskipTests verify \
-            -Dsonar.organization=<your_sonar_org> \
-            -Dsonar.projectKey=<your_sonar_project_key> \
-            org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        run: mvn -B -DskipTests verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=my-org-name -Dsonar.projectKey=my-org-name_rabbitmq-tutorials-java
