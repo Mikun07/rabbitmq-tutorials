@@ -52,7 +52,9 @@ jobs:
       - name: Build and analyze (Java Maven tutorials)
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          pwd          # should show .../rabbitmq-tutorials/java-mvn
-          ls           # should show pom.xml here
-          mvn -B -DskipTests verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          run: |
+            mvn -B -DskipTests \
+              -Dsonar.organization=mikun07 \
+              -Dsonar.projectKey=mikun07_rabbitmq-tutorials-java \
+              org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+
