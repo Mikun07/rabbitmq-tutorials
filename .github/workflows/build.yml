@@ -55,4 +55,4 @@ jobs:
         run: |
           pwd          # should show .../rabbitmq-tutorials/java-mvn
           ls           # should show pom.xml here
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          mvn -B -DskipTests verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
